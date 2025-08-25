@@ -23,7 +23,7 @@ Welcome to my personal portfolio website! This project showcases my profile, ski
 
 **Option 1: Clone the repository**
 ```bash
-git clone https://githttps://github.com/Harinishree1717/My-Portfolio.git
+git clone https://github.com/Harinishree1717/My-Portfolio.git
 ```
 
 ## 🌍 Live Demo
