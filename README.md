@@ -1,4 +1,4 @@
-# 🌟 Harinishree Portfolio Website
+#  Harinishree Portfolio Website✨
 
 Welcome to my personal portfolio website! This project showcases my profile, skills, projects, and provides a direct link to download my resume. It is fully **responsive**, **interactive**, and designed with **HTML, CSS, and Tailwind CSS**.
 
@@ -19,6 +19,13 @@ Welcome to my personal portfolio website! This project showcases my profile, ski
 - JavaScript
 - Font Awesome Icons
 
+  ## 📂 How to Use
+
+**Option 1: Clone the repository**
+```bash
+git clone https://githttps://github.com/Harinishree1717/My-Portfolio.git
+```
+
 ## 🌍 Live Demo
 Check out the live site here:  
-[Harinishree Portfolio](https://yourusername.github.io/your-repo-name)
+[Harinishree Portfolio]( https://harinishree1717.github.io/My-Portfolio/)
