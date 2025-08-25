@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en" class="transition-colors duration-500">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harinishree |Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    html { scroll-behavior: smooth; }
+    .dark-mode { background-color: #111827; color: #e5e7eb; }
+    .dark-mode nav { background-color: #1f2937; }
+    .dark-mode section, .dark-mode .card, .dark-mode .box { background-color: #1f2937; color: #e5e7eb; }
+    .dark-mode footer { background-color: #000; color: #9ca3af; }
+    .avatar { animation: floatImg 4s ease-in-out infinite, glow 3s ease-in-out infinite; }
+    @keyframes floatImg { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+    @keyframes glow { 0% { box-shadow: 0 0 15px rgba(255,255,255,0.4); } 50% { box-shadow: 0 0 35px rgba(255,255,255,0.8); } 100% { box-shadow: 0 0 15px rgba(255,255,255,0.4); } }
+    .cursor::after { content: '|'; animation: blink 0.7s infinite; margin-left: 2px; }
+    @keyframes blink { 0%, 50% { opacity: 1; } 50%, 100% { opacity: 0; } }
+  </style>
+  
+  <script>
+  function toggleTheme() {
+    const body = document.body;
+    const button = document.getElementById("themeToggle");
+    if (body.classList.contains("dark-mode")) {
+      body.classList.remove("dark-mode");
+      localStorage.setItem("theme", "light");
+      button.textContent = "🌙";
+    } else {
+      body.classList.add("dark-mode");
+      localStorage.setItem("theme", "dark");
+      button.textContent = "🌞";
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const button = document.getElementById("themeToggle");
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark-mode");
+      button.textContent = "🌞";
+    } else {
+      button.textContent = "🌙";
+    }
+    setTimeout(typeName, 500);
+  });
+
+  const nameText = "Hi, I'm Harinishree S";
+  let nameIndex = 0;
+  function typeName() {
+    const nameElement = document.getElementById("typing-name");
+    if (nameIndex < nameText.length) {
+      nameElement.textContent += nameText.charAt(nameIndex);
+      nameIndex++;
+      setTimeout(typeName, 120);
+    } else {
+      setTimeout(typeTagline, 800);
+    }
+  }
+
+  const textArray = [
+    "Aspiring Software Developer",
+    "Quick Learner",
+    "Tech Enthusiast",
+    "Problem Solver",
+    "Future Innovator",
+    "Web Developer"
+  ];
+  let currentIndex = 0;
+  let charIndex = 0;
+  let typingSpeed = 100;
+  let erasingSpeed = 50;
+  let delayBetween = 1500;
+
+  function typeTagline() {
+    const typingElement = document.getElementById("typing-text");
+    if (charIndex < textArray[currentIndex].length) {
+      typingElement.textContent += textArray[currentIndex].charAt(charIndex);
+      charIndex++;
+      setTimeout(typeTagline, typingSpeed);
+    } else {
+      setTimeout(eraseTagline, delayBetween);
+    }
+  }
+
+  function eraseTagline() {
+    const typingElement = document.getElementById("typing-text");
+    if (charIndex > 0) {
+      typingElement.textContent = textArray[currentIndex].substring(0, charIndex - 1);
+      charIndex--;
+      setTimeout(eraseTagline, erasingSpeed);
+    } else {
+      currentIndex = (currentIndex + 1) % textArray.length;
+      setTimeout(typeTagline, typingSpeed);
+    }
+  }
+</script>
+
+</head>
+<body class="bg-yellow-100 text-gray-800 font-sans">
+<!-- Navbar -->  
+  <nav class="bg-white dark:bg-gray-800 shadow-md fixed top-0 left-0 w-full z-50">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold">Harinishree✨</h1>
+<!-- Desktop Menu -->
+      <div class="hidden md:flex space-x-6">
+        <a href="#about" class="hover:text-green-500">About</a>
+        <a href="#skills" class="hover:text-green-500">Skills</a>
+        <a href="#projects" class="hover:text-green-500">Projects</a>
+        <a href="#contact" class="hover:text-green-500">Contact</a>
+      </div><!-- Mobile Hamburger Button --> 
+      <div class="md:hidden flex items-center">
+        <button id="menu-btn" class="text-gray-700 dark:text-gray-200 focus:outline-none text-2xl">
+          ☰
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden flex-col space-y-4 px-4 pb-4 md:hidden">
+      <a href="#about" class="block hover:text-green-500">About</a>
+      <a href="#skills" class="block hover:text-green-500">Skills</a>
+      <a href="#projects" class="block hover:text-green-500">Projects</a>
+      <a href="#contact" class="block hover:text-green-500">Contact</a>
+    </div>
+  </nav> <script>
+  const menuBtn = document.getElementById("menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+</script>
+
+  <!-- Navbar -->
+  <nav class="fixed w-full bg-white shadow-lg z-50">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+      <h1 class="flex items-center gap-2 text-2xl font-bold text-purple-600">
+        <svg class="w-10 h-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="currentColor">
+          <circle cx="64" cy="64" r="60" stroke="currentColor" stroke-width="8" fill="none"/>
+          <text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle"
+                font-family="Inter, sans-serif" font-size="42" font-weight="800"
+                fill="currentColor">
+            HS
+          </text>
+        </svg>
+        Portfolio
+      </h1>
+
+      <ul class="hidden md:flex space-x-6">
+        <li><a href="#home" class="hover:text-purple-600">Home</a></li>
+        <li><a href="#about" class="hover:text-purple-600">About</a></li>
+        <li><a href="#skills" class="hover:text-purple-600">Skills</a></li>
+        <li><a href="#projects" class="hover:text-purple-600">Projects</a></li>
+        <li><a href="#certifications" class="hover:text-purple-600">Certifications</a></li>
+        <li><a href="#contact" class="hover:text-purple-600">Contact</a></li>
+      </ul>
+
+      <button onclick="toggleTheme()" id="themeToggle" 
+        class="ml-4 px-3 py-2 rounded-full bg-purple-600 text-white hover:bg-purple-500 transition text-lg">
+        🌙
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section with avatar animation -->
+  <section id="home" 
+    class="h-screen flex flex-col justify-center items-center text-center px-4 relative overflow-hidden
+    bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500
+    dark:from-cyan-500 dark:via-blue-600 dark:to-purple-700">
+    
+    <div class="relative">
+      <img src="profile.png.png" 
+     class="w-48 h-48 object-cover rounded-full border-4 border-white shadow-xl avatar hover:scale-110 transition-transform duration-500 animate-float">
+
+    </div>
+
+    <!-- Name Typewriter -->
+    <h2 id="typing-name" class="text-4xl md:text-5xl font-bold mb-4 mt-6 text-white drop-shadow-lg"></h2>
+
+    <!-- Tagline Typewriter (with blinking cursor) -->
+    <p id="typing-text" class="cursor text-lg md:text-xl max-w-2xl text-white"></p>
+
+    <!-- Highlighted Quote Box BEFORE Social Icons -->
+<div class="mt-6 px-6 py-3 bg-white bg-opacity-30 backdrop-blur-md rounded-lg shadow-lg max-w-xl text-center group">
+  <p class="text-sm text-white italic">Designing Today, Shaping Tomorrow’s Solutions!</p>
+  <p class="text-xs text-white mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">- Harinishree✨</p>
+</div>
+
+
+    <!-- Social Icons -->
+    <div class="flex space-x-6 mt-6 text-2xl text-white">
+      <a href="mailto:harinishree12001@gmail.com" class="hover:text-yellow-400"><i class="fas fa-envelope"></i></a>
+      <a href="Call:+91 6380229060" class="hover:text-green-400"><i class="fas fa-phone"></i></a>
+      <a href="https://linkedin.com/in/harinishrees" target="_blank" class="hover:text-blue-400"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/Harinishree1717" target="_blank" class="hover:text-gray-300"><i class="fab fa-github"></i></a>
+    </div>
+
+    <!-- Resume link -->
+    <a href="resume.pdf" 
+      class="mt-6 px-6 py-3 bg-white text-purple-600 font-semibold rounded-full shadow-lg hover:bg-purple-100 transition flex items-center gap-2">
+      <i class="fa-solid fa-user"></i> My Resume
+    </a>
+
+  </section>
+
+
+
+
+<!-- About Me Section -->
+<section id="about" class="py-16 flex flex-col justify-center items-center text-center">
+  <div class="bg-white dark:bg-gray-800 p-8 md:p-12 rounded-3xl shadow-lg max-w-4xl">
+    <h3 class="text-3xl font-bold mb-6 text-gray-900 dark:text-white flex items-center justify-center gap-3">
+      <!-- Floating Icon -->
+      <img src="profile.png.png" alt="About Icon" class="w-8 h-8 animate-float">
+      About Me
+    </h3>
+    <p class="text-lg md:text-xl text-gray-700 dark:text-gray-200 leading-relaxed">
+      I am Harinishree, a final-year Computer Science and Engineering student passionate about technology and innovation.
+      I love developing web applications, solving problems with creative solutions, and learning new skills to shape the future.
+      My focus is on turning ideas into practical, real-world applications.
+    </p>
+
+    
+  </div>
+</section>
+
+<!-- Add this to your <style> -->
+<style>
+  @keyframes floatImg {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-10px) scale(1.05); }
+  }
+
+  .animate-float {
+    animation: floatImg 3s ease-in-out infinite;
+  }
+</style>
+
+
+
+<!-- Skills Section -->
+<section id="skills" class="py-16 bg-yellow-50 dark:bg-gray-900">
+  <h3 class="text-3xl font-bold text-center mb-10"> Skills</h3>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
+
+    <!-- Languages -->
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md card">
+      <h4 class="font-bold mb-4 flex items-center gap-2">📝 Languages</h4>
+      <div class="flex flex-wrap justify-start gap-4">
+        <div class="flex flex-col items-center w-20">
+          <img src="https://cdn-icons-png.flaticon.com/512/732/732212.png" width="50" alt="HTML5 Logo">
+          <p class="mt-2 text-sm">HTML5</p>
+        </div>
+        <div class="flex flex-col items-center w-20">
+          <img src="https://cdn-icons-png.flaticon.com/512/732/732190.png" width="50" alt="CSS3 Logo">
+          <p class="mt-2 text-sm">CSS3</p>
+        </div>
+      <div class="flex flex-col items-center w-20">
+          <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" width="50" alt="JavaScript Logo">
+          <p class="mt-2 text-sm">JavaScript</p>
+        </div>
+
+
+        <div class="flex flex-col items-center w-20">
+          <img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" width="50" alt="Java Logo">
+          <p class="mt-2 text-sm">Java</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tools -->
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md card">
+      <h4 class="font-bold mb-4 flex items-center gap-2">🛠️ Tools</h4>
+      <div class="flex flex-wrap justify-start gap-4">
+        <div class="flex flex-col items-center w-20">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" width="50" alt="GitHub Logo">
+          <p class="mt-2 text-sm">GitHub</p>
+        </div>
+        <div class="flex flex-col items-center w-20">
+          <img src="https://cdn-icons-png.flaticon.com/512/732/732221.png" width="50" alt="Word Logo">
+          <p class="mt-2 text-sm">Word</p>
+        </div>
+        <div class="flex flex-col items-center w-20">
+          <img src="https://cdn-icons-png.flaticon.com/512/732/732224.png" width="50" alt="PowerPoint Logo">
+          <p class="mt-2 text-sm">PowerPoint</p>
+        </div>
+        <div class="flex flex-col items-center w-20">
+          <img src="https://cdn-icons-png.flaticon.com/512/732/732220.png" width="50" alt="Excel Logo">
+          <p class="mt-2 text-sm">Excel</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Concepts -->
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md card">
+      <h4 class="font-bold mb-4 flex items-center gap-2">💡 Concepts</h4>
+      <div class="flex flex-wrap justify-start gap-4">
+        <div class="flex flex-col items-center w-20">
+          <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" width="50" alt="OOPs Logo">
+          <p class="mt-2 text-sm text-center">OOPs</p>
+        </div>
+        <div class="flex flex-col items-center w-20">
+          <img src="https://cdn-icons-png.flaticon.com/512/1031/1031464.png" width="50" alt="DSA Logo">
+          <p class="mt-2 text-sm text-center">DSA</p>
+        </div>
+        <div class="flex flex-col items-center w-20">
+          <img src="https://cdn-icons-png.flaticon.com/512/2965/2965274.png" width="50" alt="Matplotlib Logo">
+          <p class="mt-2 text-sm text-center">Matplotlib</p>
+        </div>
+        <div class="flex flex-col items-center w-20">
+          <img src="https://cdn-icons-png.flaticon.com/512/2772/2772123.png" width="50" alt="MySQL Logo">
+          <p class="mt-2 text-sm text-center">MySQL</p>
+        </div>
+      </div>
+    </div>
+
+  <!-- Non-Technical Skills -->
+<div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md card col-span-1 md:col-span-2 lg:col-span-3">
+  <h4 class="font-bold mb-4 flex items-center justify-center gap-2">🤝 Non-Technical Skills</h4>
+  <div class="flex flex-wrap justify-center gap-6">
+  <div class="flex flex-col items-center w-24 py-2">
+  <div class="bg-blue-100 dark:bg-blue-900 p-3 rounded-full shadow-md hover:scale-105 transition-transform duration-200">
+    <img
+      src="https://static.thenounproject.com/png/communication-icon-27324-512.png"
+      class="w-8 h-8"
+      alt="Communication Icon"
+    />
+  </div>
+  <p class="mt-2 text-sm text-center font-medium text-gray-900 dark:text-white">
+    Communication
+  </p>
+</div>
+
+    <div class="flex flex-col items-center w-24">
+      <img src="https://cdn-icons-png.flaticon.com/512/3534/3534033.png" width="50" alt="Teamwork Logo">
+      <p class="mt-2 text-sm text-center">Teamwork</p>
+    </div>
+    <div class="flex flex-col items-center w-24">
+      <img src="https://cdn-icons-png.flaticon.com/512/992/992700.png" width="50" alt="Problem Solving Logo">
+      <p class="mt-2 text-sm text-center">Problem Solving</p>
+    </div>
+    <div class="flex flex-col items-center w-24">
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135810.png" width="50" alt="Leadership Logo">
+      <p class="mt-2 text-sm text-center">Leadership</p>
+    </div>
+    <div class="flex flex-col items-center w-24">
+      <img src="https://cdn-icons-png.flaticon.com/512/2921/2921222.png" width="50" alt="Time Management Logo" class="rounded-xl shadow-md">
+      <p class="mt-2 text-sm text-center">Time Management</p>
+    </div>
+  </div>
+</div>
+  </div>
+</section> 
+
+
+
+
+<section id="projects" class="py-16 max-w-6xl mx-auto px-4">
+  <h3 class="text-3xl font-bold text-center mb-10 text-gray-900 dark:text-white">🚀 Projects</h3>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+    <!-- Project 1 -->
+    <div class="project-box relative cursor-pointer rounded-2xl shadow-md overflow-hidden bg-white dark:bg-gray-800 group">
+      <!-- Title link -->
+      <a href="https://harinishree1717.github.io/Heathers-Portfolio/" target="_blank">
+        <div class="p-6">
+          <h4 class="font-bold text-center mb-2 w-full text-gray-900 dark:text-white">🌐 Responsive Team Portfolio</h4>
+        </div>
+      </a>
+
+      <!-- Box click area for description -->
+      <div class="box-toggle absolute inset-0 top-12" style="z-index:0;"></div>
+
+      <div class="description hidden overflow-hidden p-6 text-center text-sm text-gray-700 dark:text-gray-300">
+        Developed a fully responsive portfolio website using HTML, CSS, and JavaScript. Handled full frontend development, gaining hands-on experience in web layout, design flow, and responsive design principles.
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project-box relative cursor-pointer rounded-2xl shadow-md overflow-hidden bg-white dark:bg-gray-800 group">
+      <a href="https://web-development1-ten.vercel.app/" target="_blank">
+        <div class="p-6">
+          <h4 class="font-bold text-center mb-2 w-full text-gray-900 dark:text-white">💻 Web Development Projects</h4>
+        </div>
+      </a>
+      <div class="box-toggle absolute inset-0 top-12" style="z-index:0;"></div>
+      <div class="description hidden overflow-hidden p-6 text-center text-sm text-gray-700 dark:text-gray-300">
+        Developed responsive UIs using HTML, CSS, and JS during internship at Nurture Infotech.
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project-box relative cursor-pointer rounded-2xl shadow-md overflow-hidden bg-white dark:bg-gray-800 group">
+      <a href="https://harinishree1717.github.io/-Smart-Grade-Calculator/" target="_blank">
+        <div class="p-6">
+          <h4 class="font-bold text-center mb-2 w-full text-gray-900 dark:text-white">🎓 Smart Grade Calculator</h4>
+        </div>
+      </a>
+      <div class="box-toggle absolute inset-0 top-12" style="z-index:0;"></div>
+      <div class="description hidden overflow-hidden p-6 text-center text-sm text-gray-700 dark:text-gray-300">
+        A fast and accurate Smart Grade Calculator for semester results, built with HTML, CSS, and JavaScript. Designed for college students to calculate SGPA & CGPA instantly, saving time and avoiding manual calculation errors.
+      </div>
+    </div>
+
+    <!-- Project 4 -->
+    <div class="project-box relative cursor-pointer rounded-2xl shadow-md overflow-hidden bg-white dark:bg-gray-800 group">
+      <a href="https://harinishree1717.github.io/-Knowledge-Hub-Quiz/" target="_blank">
+        <div class="p-6">
+          <h4 class="font-bold text-center mb-2 w-full text-gray-900 dark:text-white">🧠 Knowledge Hub Quiz</h4>
+        </div>
+      </a>
+      <div class="box-toggle absolute inset-0 top-12" style="z-index:0;"></div>
+      <div class="description hidden overflow-hidden p-6 text-center text-sm text-gray-700 dark:text-gray-300">
+        A simple and interactive quiz application built using HTML, CSS, and JavaScript. Designed for students to test their knowledge instantly and receive immediate feedback.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Project 5 Centered -->
+  <div class="flex justify-center mt-6">
+    <div class="project-box relative cursor-pointer rounded-2xl shadow-md overflow-hidden w-full md:w-1/2 bg-white dark:bg-gray-800 group">
+      <a href="https://harinishree1717.github.io/Step-by-Step-Power-Generation-System/" target="_blank">
+        <div class="p-6">
+          <h4 class="font-bold text-center mb-2 w-full text-gray-900 dark:text-white">⚡ Step-by-Step Power Generation System</h4>
+        </div>
+      </a>
+      <div class="box-toggle absolute inset-0 top-12" style="z-index:0;"></div>
+      <div class="description hidden overflow-hidden p-6 text-center text-sm text-gray-700 dark:text-gray-300">
+        Footstep-based energy harvesting using Arduino UNO. Presented at an International Conference.
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.project-box').forEach(box => {
+    const desc = box.querySelector('.description');
+    const toggleArea = box.querySelector('.box-toggle');
+
+    toggleArea.addEventListener('click', e => {
+      e.stopPropagation();
+
+      // Close all other descriptions
+      document.querySelectorAll('.description').forEach(d => {
+        if (d !== desc) d.classList.add('hidden');
+      });
+
+      // Toggle current
+      desc.classList.toggle('hidden');
+    });
+  });
+</script>
+
+
+
+  <!-- Certificates Section -->
+<section id="certifications" class="py-16 bg-yellow-50 dark:bg-gray-900">
+  <h3 class="text-3xl font-bold text-center mb-10">📜 Certifications</h3>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto px-4">
+
+    <!-- Certificate 1 -->
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md card">
+      <h4 class="font-bold mb-2">📑 Step By Step Power Generation System</h4>
+      <p class="text-sm mb-2">International Conference Project Presentation</p>
+      <a href="https://docs.google.com/document/d/1Ea2uAJPB8Pkqs4P4qtvHIvYt5kMsyuKD/edit?usp=drive_link&ouid=100436010035459145588&rtpof=true&sd=true" target="_blank" class="text-blue-600 hover:underline">View Certificate</a>
+    </div>
+
+    <!-- Certificate 2 -->
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md card">
+      <h4 class="font-bold mb-2">💻 Java Programming</h4>
+      <p class="text-sm mb-2">Spoken Tutorial, IIT Bombay</p>
+      <a href="https://drive.google.com/file/d/1ETcI8QFOlIv6EYA5Pwg-yP10cKTKl7OW/view?usp=drivesdk" target="_blank" class="text-blue-600 hover:underline">View Certificate</a>
+    </div>
+
+    <!-- Certificate 3 -->
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md card">
+      <h4 class="font-bold mb-2">🎓 Industry-Relevant Courses</h4>
+      <p class="text-sm mb-2">Infosys Springboard</p>
+      <a href="https://drive.google.com/file/d/1EYE90VF7rJb6Be0gClYhFWkQBAs5RLhR/view?usp=drivesdk" target="_blank" class="text-blue-600 hover:underline">View Certificate</a>
+    </div>
+
+    <!-- Certificate 4 -->
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md card">
+      <h4 class="font-bold mb-2">🏭 Industrial Internet of Things (IIoT)</h4>
+      <p class="text-sm mb-2">Swayam NPTEL</p>
+      <a href="https://drive.google.com/file/d/1EMhmzy0cCsTBbS1Qg7P5hT6_v-uBInXm/view?usp=drivesdk" target="_blank" class="text-blue-600 hover:underline">View Certificate</a>
+    </div>
+
+    <!-- Certificate 5 -->
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md card">
+      <h4 class="font-bold mb-2">🗄️ MongoDB Basics for Students (Badge Earned)</h4>
+      <p class="text-sm mb-2">MongoDB</p>
+      <a href="https://drive.google.com/file/d/1NBzV-mqEGvuOMVkeC5GYTiIZQlpzUyJg/view?usp=sharing" target="_blank" class="text-blue-600 hover:underline">View Certificate</a>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- Contact Section -->
+<section id="contact" class="py-16 bg-gradient-to-r from-pink-500 to-purple-600 dark:from-teal-400 dark:via-purple-500 dark:to-indigo-600 text-white">
+  <h3 class="text-3xl font-bold text-center mb-10">Contact</h3>
+  <div class="flex flex-wrap justify-center gap-8 max-w-4xl mx-auto text-center">
+
+    <a href="mailto:harinishree12001@gmail.com" class="flex items-center gap-2 bg-white/20 hover:bg-white/40 px-4 py-2 rounded-lg transition">
+      <i class="fas fa-envelope"></i> <span>Email</span>
+    </a>
+
+    <a href="Call:+91 6380229060" class="flex items-center gap-2 bg-white/20 hover:bg-white/40 px-4 py-2 rounded-lg transition">
+      <i class="fas fa-phone"></i> <span>Phone</span>
+    </a>
+
+    <a href="https://linkedin.com/in/harinishrees" target="_blank" class="flex items-center gap-2 bg-white/20 hover:bg-white/40 px-4 py-2 rounded-lg transition">
+      <i class="fab fa-linkedin"></i> <span>LinkedIn</span>
+    </a>
+
+    <a href="https://github.com/Harinishree1717" target="_blank" class="flex items-center gap-2 bg-white/20 hover:bg-white/40 px-4 py-2 rounded-lg transition">
+      <i class="fab fa-github"></i> <span>GitHub</span>
+    </a>
+
+  </div>
+</section>
+
+  <!-- Footer -->
+  <footer class="bg-purple-700 text-white text-center py-4">
+    <p>copyright © 2025 by Harinishree | All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
