@@ -28,4 +28,4 @@ git clone https://github.com/Harinishree1717/My-Portfolio.git
 
 ## 🌍 Live Demo
 Check out the live site here:  
-[Harinishree Portfolio]( https://harinishree1717.github.io/My-Portfolio/)
+[Harinishree Portfolio](  https://harinishree1717.github.io/My-Portfolio/)
