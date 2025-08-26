@@ -3,7 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Harinishree |Portfolio</title>
+ <!-- Light mode favicon -->
+<link rel="icon" type="image/png" href="favicon-light.png" media="(prefers-color-scheme: light)">
+
+<!-- Dark mode favicon -->
+<link rel="icon" type="image/png" href="favicon-dark.png" media="(prefers-color-scheme: dark)">
+
+<title>Harinishree | Portfolio</title>
+
+
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -98,39 +106,54 @@
 
 </head>
 <body class="bg-yellow-100 text-gray-800 font-sans">
-<!-- Navbar -->  
-  <nav class="bg-white dark:bg-gray-800 shadow-md fixed top-0 left-0 w-full z-50">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 class="text-xl font-bold">Harinishree✨</h1>
-<!-- Desktop Menu -->
-      <div class="hidden md:flex space-x-6">
-        <a href="#about" class="hover:text-green-500">About</a>
-        <a href="#skills" class="hover:text-green-500">Skills</a>
-        <a href="#projects" class="hover:text-green-500">Projects</a>
-        <a href="#contact" class="hover:text-green-500">Contact</a>
-      </div><!-- Mobile Hamburger Button --> 
-      <div class="md:hidden flex items-center">
-        <button id="menu-btn" class="text-gray-700 dark:text-gray-200 focus:outline-none text-2xl">
-          ☰
-        </button>
-      </div>
-    </div>
+<!-- Mobile Hamburger Menu (Include Only) -->
+<!-- Hamburger Button -->
+<button id="menu-btn" class="md:hidden fixed top-4 right-4 flex flex-col justify-between w-8 h-6 text-gray-700 dark:text-white z-50 focus:outline-none">
+  <span class="block h-1 w-full bg-gray-800 dark:bg-white transition-transform"></span>
+  <span class="block h-1 w-full bg-gray-800 dark:bg-white transition-transform"></span>
+  <span class="block h-1 w-full bg-gray-800 dark:bg-white transition-transform"></span>
+</button>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden flex-col space-y-4 px-4 pb-4 md:hidden">
-      <a href="#about" class="block hover:text-green-500">About</a>
-      <a href="#skills" class="block hover:text-green-500">Skills</a>
-      <a href="#projects" class="block hover:text-green-500">Projects</a>
-      <a href="#contact" class="block hover:text-green-500">Contact</a>
-    </div>
-  </nav> <script>
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="hidden fixed top-16 right-0 left-0 flex-col space-y-4 px-6 pb-4 md:hidden bg-white dark:bg-gray-800 shadow-lg z-40">
+  <a href="#home" class="block py-2 hover:text-green-500">Home</a>
+  <a href="#about" class="block py-2 hover:text-green-500">About</a>
+  <a href="#skills" class="block py-2 hover:text-green-500">Skills</a>
+  <a href="#projects" class="block py-2 hover:text-green-500">Projects</a>
+  <a href="#certifications" class="block py-2 hover:text-green-500">Certifications</a>
+  <a href="#contact" class="block py-2 hover:text-green-500">Contact</a>
+</div>
+
+<script>
   const menuBtn = document.getElementById("menu-btn");
   const mobileMenu = document.getElementById("mobile-menu");
 
   menuBtn.addEventListener("click", () => {
     mobileMenu.classList.toggle("hidden");
+    menuBtn.classList.toggle("open"); // Animate hamburger into X
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('#mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      menuBtn.classList.remove('open'); // Reset hamburger
+    });
   });
 </script>
+
+<style>
+  /* Hamburger animation */
+  #menu-btn.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  #menu-btn.open span:nth-child(2) {
+    opacity: 0;
+  }
+  #menu-btn.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+</style>
 
   <!-- Navbar -->
   <nav class="fixed w-full bg-white shadow-lg z-50">
@@ -325,12 +348,9 @@
     <img
       src="https://static.thenounproject.com/png/communication-icon-27324-512.png"
       class="w-8 h-8"
-      alt="Communication Icon"
-    />
+      alt="Communication Icon"/>
   </div>
-  <p class="mt-2 text-sm text-center font-medium text-gray-900 dark:text-white">
-    Communication
-  </p>
+  <p class="mt-2 text-sm text-center">Communication</p>
 </div>
 
     <div class="flex flex-col items-center w-24">
@@ -355,10 +375,8 @@
 </section> 
 
 
-
-
 <section id="projects" class="py-16 max-w-6xl mx-auto px-4">
-  <h3 class="text-3xl font-bold text-center mb-10 text-gray-900 dark:text-white">🚀 Projects</h3>
+  <h3 class="text-3xl font-bold text-center mb-10">🚀 Projects</h3>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
@@ -527,10 +545,12 @@
   </div>
 </section>
 
-  <!-- Footer -->
   <footer class="bg-purple-700 text-white text-center py-4">
-    <p>copyright © 2025 by Harinishree | All Rights Reserved.</p>
-  </footer>
+  © <span id="year"></span> Harinishree. All Rights Reserved.
+</footer>
 
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
